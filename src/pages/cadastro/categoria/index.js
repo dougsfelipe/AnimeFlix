@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import PageDefault from '../../../components/PageDefault';
 import FormField from '../../../components/FormField';
 import Button from '../../../components/Button';
+import useForm from '../../../hooks/useForm';
 
 function CadastroCategoria() {
   const valoresIniciais = {
@@ -11,20 +12,8 @@ function CadastroCategoria() {
     cor: '',
   };
 
+  const { handleChange, values, clearForm } = useForm(valoresIniciais);
   const [categorias, setCategorias] = useState(['']);
-  const [values, setValues] = useState([valoresIniciais]);
-
-  function setValue(chave, valor) {
-    // chave: nome, descricao
-    setValues({
-      ...values,
-      [chave]: valor,
-    });
-  }
-
-  function handleChange(infoEvento) {
-    setValue(infoEvento.target.getAttribute('name'), infoEvento.target.value);
-  }
 
   useEffect(() => {
     const URL = window.location.hostname.includes('localhost') ? 'http://localhost:8080/categorias' : 'https://appreactflix.herokuapp.com/categorias';
@@ -55,7 +44,7 @@ function CadastroCategoria() {
           values,
         ]);
 
-        setValues(valoresIniciais);
+        clearForm();
       }}
       >
 
@@ -95,8 +84,8 @@ function CadastroCategoria() {
       <ul>
         {categorias.map((categoria, indice) => (
         // eslint-disable-next-line react/no-array-index-key
-          <li key={`${categoria.nome}${indice}`}>
-            {categoria.nome}
+          <li key={`${categoria.titulo}${indice}`}>
+            {categoria.titulo}
           </li>
         ))}
       </ul>

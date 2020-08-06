@@ -39,7 +39,7 @@ function CadastroVideo() {
         videosRepository.create({
           titulo: values.titulo,
           url: values.url,
-          categoriaId: values.categoriaId,
+          categoriaId: categoriaId.id,
         })
           .then(() => {
             history.push('/');

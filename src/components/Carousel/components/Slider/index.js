@@ -29,25 +29,58 @@ const Container = styled.ul`
 `;
 
 export const SliderItem = styled.li`
-  margin-right: 16px;
+  margin-right: 6px;
   img {
-    margin: 16px;
+    margin: 2px;
     width: 298px;
     height: 197px;
     object-fit: cover;
+   
   }
 `;
+
+export const Button = styled.button`
+  margin-right: -16px;
+  margin-left: -36px;
+  
+  }
+`;
+
+function SampleNextArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, display: "block", marginRight: "-65px"}}
+      onClick={onClick}
+    />
+  );
+}
+
+
+function SamplePrevArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, display: "block", marginLeft: "-55px" }}
+      onClick={onClick}
+    />
+  );
+}
 
 
 const Slider = ({ children }) => (
   <Container>
     <SlickSlider {...{
       dots: false,
-      infinite: false,
+      infinite: true,
       speed: 300,
       centerMode: false,
       variableWidth: true,
       adaptiveHeight: true,
+      nextArrow: <SampleNextArrow />,
+      prevArrow: <SamplePrevArrow />,
     }}
     >
       {children}

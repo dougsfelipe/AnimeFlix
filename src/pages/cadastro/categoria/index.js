@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import PageDefault from '../../../components/PageDefault';
 import FormField from '../../../components/FormField';
 import Button from '../../../components/Button';
 import useForm from '../../../hooks/useForm';
+import categoriasRepository from '../../../repositories/categorias';
+
+
 
 function CadastroCategoria() {
   const valoresIniciais = {
@@ -11,7 +14,7 @@ function CadastroCategoria() {
     descricao: '',
     cor: '',
   };
-
+  const history = useHistory();
   const { handleChange, values, clearForm } = useForm(valoresIniciais);
   const [categorias, setCategorias] = useState(['']);
 
@@ -33,7 +36,6 @@ function CadastroCategoria() {
 
       <h1>
         Página de Cadastro de Categoria
-        {values.nome}
       </h1>
 
       <form onSubmit={function handleSubmit(infosEvento) {
@@ -43,6 +45,21 @@ function CadastroCategoria() {
           ...categorias,
           values,
         ]);
+
+        categoriasRepository.create({
+          titulo: values.nome,
+          descricao: values.descricao,
+          cor: values.cor,
+        })
+          .then(() => {
+            
+            history.push('/cadastro/video');
+          });
+
+        
+
+        console.log(values);
+        console.log(categorias);
 
         clearForm();
       }}
@@ -56,6 +73,7 @@ function CadastroCategoria() {
             name="nome"
             value={values.nome}
             onChange={handleChange}
+            
           />
         </div>
         <div>
@@ -65,6 +83,7 @@ function CadastroCategoria() {
             name="descricao"
             value={values.descricao}
             onChange={handleChange}
+            
           />
         </div>
         <div>
@@ -74,6 +93,7 @@ function CadastroCategoria() {
             name="cor"
             value={values.cor}
             onChange={handleChange}
+            
           />
         </div>
         <Button>

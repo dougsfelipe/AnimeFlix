@@ -27,7 +27,7 @@ ContentAreaContainer.Item = styled.div`
 ContentAreaContainer.Category = styled.h1`
   font-family: Roboto;
   font-style: normal;
-  font-weight: normal;
+  font-weight: 500;
   font-size: 60px;
   line-height: 70px;
   display: flex;
@@ -52,7 +52,7 @@ ContentAreaContainer.Description = styled.p`
 
 ContentAreaContainer.Title = styled.h2`
   font-style: normal;
-  font-weight: 300;
+  font-weight: 600;
   font-size: 40px;
   line-height: 1;
   margin-top: 0;
@@ -67,7 +67,7 @@ export const BannerMainContainer = styled.section`
   height: 80vh;
   position: relative;
   color: #fff;
-  background-image: ${({ backgroundImage }) => `url(${backgroundImage})`}; 
+  background-image:linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(174,174,174,0) 25%, rgba(93,93,93,0.19371498599439774) 70%, rgba(53,53,53,0.1) 66%, black 87%, black 100%), ${({ backgroundImage }) => `url(${backgroundImage})`}; 
   background-size: cover;
   background-position: center;
   @media (max-width: 800px) {
@@ -91,7 +91,7 @@ export const BannerMainContainer = styled.section`
   }
   &:after {
     bottom: 0;
-    background: linear-gradient(0deg, #141414 0%, transparent 100%);
+   
   }
 `;
 

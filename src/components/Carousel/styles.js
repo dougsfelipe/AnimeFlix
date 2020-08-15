@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 export const Title = styled.h3`
   font-style: normal;
-  font-weight: 500;
-  font-size: 28px;
+  font-weight: 600;
+  font-size: 30px;
   line-height: 1;
   margin-bottom: -12px;
   display: inline-block;
@@ -52,7 +52,8 @@ export const VideoCardList = styled.ul`
 export const VideoCardGroupContainer = styled.section`
   color: white;
   min-height: 197px;
-
+  margin-left:5%;
+  margin-right:5%;
   margin-bottom: 16px;
 `;
 

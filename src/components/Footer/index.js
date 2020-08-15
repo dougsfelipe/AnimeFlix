@@ -1,18 +1,19 @@
 import React from 'react';
-import { FooterBase } from './styles';
+import { FooterBase, IMG , Link} from './styles';
+import Logo from '../../assets/img/Logo.png';
 
 function Footer() {
   return (
     <FooterBase>
       <a href="https://www.alura.com.br/">
-        <img src="https://www.alura.com.br/assets/img/alura-logo-white.1570550707.svg" alt="Logo Alura" />
+        <IMG src={Logo} alt="Logo Alura" />
       </a>
       <p>
-        Orgulhosamente criado durante a
+        Feito por <Link href="https://github.com/dougsfelipe"> Douglas Santos </Link>durante a Imersão React da
         {' '}
-        <a href="https://www.alura.com.br/">
-          Imersão React da Alura
-        </a>
+        <Link href="https://www.alura.com.br/">
+           Alura
+        </Link>
       </p>
     </FooterBase>
   );

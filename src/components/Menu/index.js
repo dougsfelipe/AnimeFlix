@@ -5,17 +5,23 @@ import './Menu.css';
 import Button from '../Button';
 
 function Menu() {
-  
-
   return (
     <nav className="Menu" position="fixed">
       <Link to="/">
         <img className="Logo" src={Logo} alt="Aluraflix" />
       </Link>
 
-      <Button as={Link} className="ButtonLink" to="/cadastro/video">
-        Novo Video
+      <div className="Buttons">
+        <Button as={Link} className="ButtonLink" to="/cadastro/video">
+          Novo Video
       </Button>
+        <Button as={Link} to="/cadastro/categoria" className="link">
+
+          Nova Categoria
+  
+      </Button>
+      </div>
+
     </nav>
   );
 }

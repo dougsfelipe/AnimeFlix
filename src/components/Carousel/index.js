@@ -9,7 +9,7 @@ function Carousel({
 }) {
   const categoryTitle = category.titulo;
   const categoryColor = category.cor;
-  const categoryExtraLink = category.link_extra;
+  const categoryExtraLink = category.descricao;
   const videos = category.videos;
   return (
     <VideoCardGroupContainer>
@@ -19,8 +19,8 @@ function Carousel({
             {categoryTitle} 
           </Title>
           {categoryExtraLink && 
-            <ExtraLink href={categoryExtraLink.url} target="_blank">
-              {categoryExtraLink.text}  
+            <ExtraLink target="_blank">
+              {categoryExtraLink}  
             </ExtraLink>
           }
         </>

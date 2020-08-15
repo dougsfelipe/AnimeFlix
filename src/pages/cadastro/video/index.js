@@ -1,11 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import styled from 'styled-components';
+
 import PageDefault from '../../../components/PageDefault';
 import useForm from '../../../hooks/useForm';
 import FormField from '../../../components/FormField';
 import Button from '../../../components/Button';
 import videosRepository from '../../../repositories/videos';
 import categoriasRepository from '../../../repositories/categorias';
+import './style.css';
+
+const Form = styled.div`
+padding: 5%;
+`;
+
+
+
 
 function CadastroVideo() {
   const history = useHistory();
@@ -28,58 +38,64 @@ function CadastroVideo() {
   console.log(categorias);
   return (
     <PageDefault>
+      <Form>
+        <h1> Cadastro de Video</h1>
 
-      <h1> Cadastro de Video</h1>
 
-      <form onSubmit={(event) => {
-        event.preventDefault();
+        <form onSubmit={(event) => {
+          event.preventDefault();
 
-        const categoriaEscohida = categorias.find((categoria) => categoria.titulo === values.categoria);
+          const categoriaEscohida = categorias.find((categoria) => categoria.titulo === values.categoria);
 
-        videosRepository.create({
-          titulo: values.titulo,
-          url: values.url,
-          categoriaId: categoriaEscohida.id,
-        })
-          .then(() => {
-            history.push('/');
-          });
-      }}
-      >
-        <FormField
-          label="Titulo do Video"
-          type="text"
-          name="titulo"
-          value={values.titulo}
-          onChange={handleChange}
-        />
+          videosRepository.create({
+            titulo: values.titulo,
+            url: values.url,
+            categoriaId: categoriaEscohida.id,
+          })
+            .then(() => {
+              history.push('/');
+            });
+        }}
+        >
+          <FormField
+            label="Titulo do Video"
+            type="text"
+            name="titulo"
+            value={values.titulo}
+            onChange={handleChange}
+          />
 
-        <FormField
-          label="URL"
-          type="text"
-          name="url"
-          value={values.url}
-          onChange={handleChange}
-        />
+          <FormField
+            label="URL"
+            type="text"
+            name="url"
+            value={values.url}
+            onChange={handleChange}
+          />
 
-        <FormField
-          label="Categoria"
-          type="text"
-          name="categoria"
-          value={values.categoria}
-          onChange={handleChange}
-          suggestions={categoryTitles}
-        />
+          <FormField
+            label="Categoria"
+            type="text"
+            name="categoria"
+            value={values.categoria}
+            onChange={handleChange}
+            suggestions={categoryTitles}
+          />
+
+          <Button>
+            Cadastrar
+        </Button>
 
         <Button>
-          Cadastrar
-        </Button>
-      </form>
+          <Link to="/cadastro/categoria" className="link">
+            Cadastrar Categoria 
+          </Link>
+      </Button>
+      
+        </form>
 
-      <Link to="/cadastro/categoria">
-        Cadasrtar Categoria
-      </Link>
-
+        
+      </Form>
     </PageDefault>
   );
 }

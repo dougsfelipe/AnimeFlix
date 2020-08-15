@@ -1,0 +1,33 @@
+.tabelaCategorias{
+    width: 100%;
+    border: 1px solid #7F7CAF !important;
+    margin-top: 60px;
+    border-collapse: collapse;
+    padding:4px
+}
+
+th, td {
+    padding: 8px;
+    text-align: left; 
+font-size: 14px;
+font-weight: 400; }
+
+  tr:first-child {background-color: #7F7CAF ; color: white; font-weight: 600; font-size: 18px;}
+
+
+tr .firstRow{
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.buttonDelete{
+    background-color: tomato !important;
+    justify-content: center;
+    height: 40px;
+    font-size: 14px !important;
+    margin-right: 0px !important;
+}
+
+.delete{
+    width: 80px;
+}

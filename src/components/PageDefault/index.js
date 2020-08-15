@@ -9,6 +9,7 @@ color: var(--white);
 flex:1;
 
 
+
 `
 
 function PageDefault({ children }) {

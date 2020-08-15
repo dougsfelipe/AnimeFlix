@@ -43,17 +43,17 @@ const Input = styled.input`
   outline: 0;
   border: 0;
   border-top: 4px solid transparent;
-  border-bottom: 4px solid #53585D;
+  border-bottom: 2px solid #53585D;
   
   padding: 16px 16px;
   margin-bottom: 45px;
   
   resize: none;
-  border-radius: 4px;
+  border-radius: 2px;
   transition: border-color .3s;
   
   &:focus {
-    border-bottom-color: var(--primary);
+    border-bottom-color: #7f7caf;
   }
   &:focus:not([type='color']) + ${Label.Text} {
     transform: scale(.6) translateY(-10px);

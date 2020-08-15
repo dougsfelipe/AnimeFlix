@@ -65,6 +65,7 @@ ContentAreaContainer.Title = styled.h2`
 
 export const BannerMainContainer = styled.section`
   height: 80vh;
+  padding-right: -5%;
   position: relative;
   color: #fff;
   background-image:linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(174,174,174,0) 25%, rgba(93,93,93,0.19371498599439774) 70%, rgba(53,53,53,0.1) 66%, black 87%, black 100%), ${({ backgroundImage }) => `url(${backgroundImage})`}; 

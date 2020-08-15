@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import styled from 'styled-components';
+
 import PageDefault from '../../../components/PageDefault';
 import FormField from '../../../components/FormField';
 import Button from '../../../components/Button';
 import useForm from '../../../hooks/useForm';
 import categoriasRepository from '../../../repositories/categorias';
+import './style.css';
 
-
+const Form = styled.div`
+padding: 5%;
+`;
 
 function CadastroCategoria() {
   const valoresIniciais = {
@@ -34,85 +39,107 @@ function CadastroCategoria() {
   return (
     <PageDefault>
 
-      <h1>
-        Página de Cadastro de Categoria
+      <Form>
+        <h1>
+          Página de Cadastro de Categoria
       </h1>
 
-      <form onSubmit={function handleSubmit(infosEvento) {
-        infosEvento.preventDefault();
+        <form onSubmit={function handleSubmit(infosEvento) {
+          infosEvento.preventDefault();
 
-        setCategorias([
-          ...categorias,
-          values,
-        ]);
+          setCategorias([
+            ...categorias,
+            values,
+          ]);
 
-        categoriasRepository.create({
-          titulo: values.nome,
-          descricao: values.descricao,
-          cor: values.cor,
-        })
-          .then(() => {
-            
-            history.push('/cadastro/video');
-          });
+          categoriasRepository.create({
+            titulo: values.nome,
+            descricao: values.descricao,
+            cor: values.cor,
+          })
+            .then(() => {
 
-        
+              history.push('/cadastro/video');
+            });
 
-        console.log(values);
-        console.log(categorias);
 
-        clearForm();
-      }}
-      >
 
-        <div>
 
-          <FormField
-            label="Nome da Categoria"
-            type="text"
-            name="nome"
-            value={values.nome}
-            onChange={handleChange}
-            
-          />
-        </div>
-        <div>
-          <FormField
-            label="Descrição"
-            type="textarea"
-            name="descricao"
-            value={values.descricao}
-            onChange={handleChange}
-            
-          />
-        </div>
-        <div>
-          <FormField
-            label="Cor"
-            type="color"
-            name="cor"
-            value={values.cor}
-            onChange={handleChange}
-            
-          />
-        </div>
-        <Button>
-          Cadastrar
+
+          clearForm();
+        }}
+        >
+
+          <div>
+
+            <FormField
+              label="Nome da Categoria"
+              type="text"
+              name="nome"
+              value={values.nome}
+              onChange={handleChange}
+
+            />
+          </div>
+          <div>
+            <FormField
+              label="Descrição"
+              type="textarea"
+              name="descricao"
+              value={values.descricao}
+              onChange={handleChange}
+
+            />
+          </div>
+          <div>
+            <FormField
+              label="Cor"
+              type="color"
+              name="cor"
+              value={values.cor}
+              onChange={handleChange}
+
+            />
+          </div>
+          <Button>
+            Cadastrar
         </Button>
-      </form>
+        </form>
 
-      <ul>
-        {categorias.map((categoria, indice) => (
-        // eslint-disable-next-line react/no-array-index-key
-          <li key={`${categoria.titulo}${indice}`}>
-            {categoria.titulo}
-          </li>
-        ))}
-      </ul>
-      <Link to="/">
-        Ir para home
-      </Link>
 
+
+
+        <table border="1" className="tabelaCategorias">
+          <tr className="firstRow">
+            <td>Nome</td>
+            <td>Descrição</td>
+            <td className="delete">Remover</td>
+          </tr>
+
+
+          {categorias.map((categoria, indice) => (
+
+            <tr>
+
+              <td key={`${categoria.titulo}`}>
+                {categoria.titulo}
+              </td>
+              <td key={`${categoria.descricao}${indice}`}>
+                {categoria.descricao}
+              </td>
+              <td className="delete">
+                <Button className="buttonDelete">
+                  Remover
+                </Button>
+
+              </td>
+            </tr>
+
+          ))}
+
+        </table>
+
+      </Form>
     </PageDefault>
   );
 }
